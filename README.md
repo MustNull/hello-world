@@ -1,2 +1,2 @@
 # hello-world
-I am an newcomers
+I am an newcomer
