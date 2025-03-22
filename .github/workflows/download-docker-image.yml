@@ -19,7 +19,7 @@ jobs:
         run: docker save -o open-webui_image.tar ghcr.io/open-webui/open-webui:latest
 
       - name: Upload tar file as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: open-webui_image
           path: open-webui_image.tar
