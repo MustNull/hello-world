@@ -6,8 +6,8 @@ jobs:
   download-image:
     runs-on: ubuntu-latest
     steps:
-      #- name: Checkout repository
-      #  uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -19,7 +19,7 @@ jobs:
         run: docker save -o open-webui_image.tar ghcr.io/open-webui/open-webui:latest
 
       - name: Upload tar file as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: open-webui_image
           path: open-webui_image.tar
