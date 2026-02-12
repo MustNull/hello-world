@@ -21,7 +21,7 @@ jobs:
       - name: Download Python dependencies
         # 修改 requirements.txt为你的依赖文件
         run: |
-          pip download --platform win_amd64 browser-use -d offline_pkg
+          pip download --platform win_amd64 --python-version 313 --only-binary=:all: --no-deps browser-use -d offline_pkg
 
       - name: Zip packages
         run: |
