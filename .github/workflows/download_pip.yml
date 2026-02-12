@@ -1,0 +1,39 @@
+name: Package browser_use for Offline Installation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Create output directory
+        run: mkdir offline_pkg
+
+      - name: Download Python dependencies
+        # 修改 requirements.txt为你的依赖文件
+        run: |
+          pip download browser-use -d offline_pkg
+
+      - name: Copy browser_use files
+        run: |
+          cp -r browser_use offline_pkg/
+          # 若包含其他相关依赖/文件，请加 cp -r ./xxx offline_pkg/
+
+      - name: Zip packages
+        run: |
+          zip -r browser_use_offline.zip offline_pkg
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser_use_offline
+          path: browser_use_offline.zip
