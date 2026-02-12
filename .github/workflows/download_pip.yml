@@ -23,11 +23,6 @@ jobs:
         run: |
           pip download browser-use -d offline_pkg
 
-      - name: Copy browser_use files
-        run: |
-          cp -r browser_use offline_pkg/
-          # 若包含其他相关依赖/文件，请加 cp -r ./xxx offline_pkg/
-
       - name: Zip packages
         run: |
           zip -r browser_use_offline.zip offline_pkg
